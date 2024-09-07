@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMKA Photobooth Rental</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: #ff5e5e;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        nav {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            height: 100%;
+            background-color: #333;
+            padding-top: 60px;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        nav a {
+            padding: 15px 20px;
+            text-decoration: none;
+            font-size: 1.2em;
+            color: white;
+            display: block;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #575757;
+            transform: translateX(10px);
+        }
+
+        #menuToggle:checked + nav {
+            transform: translateX(0);
+        }
+
+        #menuToggle {
+            display: none;
+        }
+
+        .menuIcon {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            cursor: pointer;
+            font-size: 30px;
+            color: #000;
+        }
+
+        section {
+            padding: 60px 20px;
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        section.hidden {
+            display: none;
+        }
+
+        .pricing-container, .faq-container {
+            padding: 50px;
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .pricing-container h2, .faq-container h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .pricing-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .pricing-item {
+            background-color: #fff;
+            border: 2px solid #ff5e5e;
+            padding: 20px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.5em;
+            color: #ff5e5e;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            flex: 1 1 calc(50% - 40px);
+            max-width: 300px;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #ff5e5e;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            text-align: center;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #e04d4d;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .pricing-container .button {
+            margin-top: 30px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                width: 200px;
+            }
+            .pricing-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+            .pricing-item {
+                max-width: 100%;
+            }
+        }
+
+        .survey-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border: 2px solid #333;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .survey-form label {
+            font-weight: 500;
+        }
+        .survey-form input, .survey-form select, .survey-form button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .survey-form button {
+            background-color: #ff5e5e;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .survey-form button:hover {
+            background-color: #e04d4d;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>EMKA Photobooth Rental</h1>
+        <label class="menuIcon" for="menuToggle">&#9776;</label>
+    </header>
+
+    <input type="checkbox" id="menuToggle">
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact Us</a>
+    </nav>
+
+    <section id="home">
+        <h2>Welcome to EMKA Photobooth Rental</h2>
+        <p>Capture your memorable moments with our easy-to-use photobooth. Perfect for weddings, birthdays, company events, and more!</p>
+        <a href="#pricing" class="button">See our offers</a>
+    </section>
+
+    <section id="pricing" class="hidden">
+        <div class="pricing-container">
+            <h2>Offers</h2>
+            <p>Des tarifs pour tous les budgets</p>
+            <div class="pricing-grid">
+                <div class="pricing-item">199€<br>Economix</div>
+                <div class="pricing-item">249€<br>Simplix</div>
+                <div class="pricing-item">349€<br>Pratix</div>
+                <div class="pricing-item">549€<br>Tranquilix</div>
+            </div>
+            <a href="#contact" class="button">Contact us now</a>
+        </div>
+    </section>
+
+    <section id="faq" class="hidden">
+        <div class="faq-container">
+            <h2>FAQ</h2>
+            <div class="question"><strong>1. Ai-je besoin de venir récupérer le photobooth ?</strong></div>
+            <div class="answer">Non, notre équipe s'occupe de la livraison et de l'installation du photobooth sur place.</div>
+            <br>
+            <div class="question"><strong>2. Ai-je besoin d'être un expert en photographie pour utiliser le photobooth ?</strong></div>
+            <div class="answer">Pas du tout, notre photobooth est simple d'utilisation et ne nécessite aucune compétence technique.</div>
+            <br>
+            <div class="question"><strong>3. Est-il possible de personnaliser mes photos avec mes propres templates ?</strong></div>
+            <div class="answer">Oui, vous pouvez personnaliser les templates avant l'événement pour qu'ils correspondent à votre thème.</div>
+            <br>
+            <div class="question"><strong>4. Quand vais-je recevoir mes photos ?</strong></div>
+            <div class="answer">Vous recevrez vos photos immédiatement après l'événement via un lien de téléchargement sécurisé.</div>
+            <br>
+            <div class="question"><strong>5. Combien de temps les photos sont-elles disponibles en ligne ?</strong></div>
+            <div class="answer">Les photos restent disponibles en ligne pendant un mois après l'événement.</div>
+            <br>
+            <div class="question"><strong>6. Puis-je commander des tirages supplémentaires après l'événement ?</strong></div>
+            <div class="answer">Oui, vous pouvez commander des tirages supplémentaires via notre service après-vente.</div>
+        </div>
+    </section>
+
+    <section id="about" class="hidden">
+        <div class="about-container">
+            <h2>About Us</h2>
+            <p>EMKA Photobooth Rental est votre partenaire pour capturer les moments inoubliables de vos événements. Notre photobooth facile à utiliser offre une expérience amusante et mémorable pour vos invités. Que ce soit pour des mariages, des anniversaires ou des événements d'entreprise, nous garantissons un service professionnel et des photos de haute qualité.</p>
+        </div>
+    </section>
+
+    <section id="contact" class="hidden">
+        <h2>Contact Us</h2>
+        <div class="survey-form">
+            <form action="https://formspree.io/f/xzzpwaaq" method="POST">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" placeholder="Your full name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Your email address" required>
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" placeholder="Your phone number" required>
+                <label for="event-type">Type of Event:</label>
+                <select id="event-type" name="event-type" required>
+                    <option value="wedding">Wedding</option>
+                    <option value="birthday">Birthday</option>
+                    <option value="corporate">Corporate Event</option>
+                    <option value="other">Other</option>
+                </select>
+                <label for="guests">Number of Guests:</label>
+                <input type="number" id="guests" name="guests" placeholder="e.g., 150" required>
+                <label for="date">Event Date:</label>
+                <input type="date" id="date" name="date" required>
+                <label for="budget">Budget:</label>
+                <select id="budget" name="budget" required>
+                    <option value="199">199€</option>
+                    <option value="249">249€</option>
+                    <option value="349">349€</option>
+                    <option value="549">549€</option>
+                </select>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>Contact us at info@emkaphotobooth.com | Phone: +123 456 7890</p>
+        <p>Follow us on social media!</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('section').forEach(section => section.classList.add('hidden'));
+                document.querySelector(link.getAttribute('href')).classList.remove('hidden');
+                document.getElementById('menuToggle').checked = false;
+            });
+        });
+
+        document.querySelectorAll('.button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+                document.querySelectorAll('section').forEach(section => section.classList.add('hidden'));
+                document.querySelector(this.getAttribute('href')).classList.remove('hidden');
+                document.getElementById('menuToggle').checked = false;
+            });
+        });
+    </script>
+</body>
+</html>
